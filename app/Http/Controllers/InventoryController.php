@@ -148,6 +148,13 @@ class InventoryController extends Controller
         return redirect('/management');
     }
 
+    public function destroy(string $slug){
+        $item = Slopes::where('slug',$slug)->first();
+        Storage::deleteDirectory($slug);
+        $item->delete();
+
+        return redirect('/inventory')->with('success', 'Item deleted successfully.');
+    }
 
     public function tempUpload(Request $request)
     {

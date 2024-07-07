@@ -43,6 +43,7 @@ Route::middleware([RoleMiddleware::class . ':administrator'])->group(function ()
     Route::get('/create/rating/{slug}', [InventoryController::class, 'create_rating']);
     Route::post('/create/rating/{slug}', [InventoryController::class, 'store_rating']);
 
+    Route::delete('/slope/{slug}', [InventoryController::class, 'destroy']);
 
     Route::post('/temp-upload', [InventoryController::class, 'tempUpload']);
     Route::delete('/temp-delete', [InventoryController::class, 'tempDelete']);
