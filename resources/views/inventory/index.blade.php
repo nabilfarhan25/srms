@@ -54,7 +54,7 @@
                 </h2>
 
                 <div class="text-white sm:flex">
-                    <a href="">
+                    <a href="/inventory">
                         <div
                             class=" bg-white text-gray-800 border-2 font-semibold border-white px-5 py-3 sm:mr-2 mb-2 flex rounded-full hover:bg-white transition duration-150 hover:text-gray-800">
                             <svg class="w-6 h-6 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -67,7 +67,7 @@
                             Slope Inventory
                         </div>
                     </a>
-                    <a href="">
+                    <a href="/management">
                         <div
                             class=" border-2 border-white px-5 py-3 sm:mr-2 mb-2 flex rounded-full hover:bg-white transition duration-150 hover:text-gray-800">
                             <svg class="w-6 h-6 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -94,7 +94,7 @@
                             Inspection
                         </div>
                     </a>
-                    <a href="">
+                    <a href="/mitigation">
                         <div
                             class=" border-2 border-white px-5 py-3 sm:mr-2 mb-2 flex rounded-full hover:bg-white transition duration-150 hover:text-gray-800">
 
@@ -107,7 +107,7 @@
                             Mitigation
                         </div>
                     </a>
-                    <a href="">
+                    <a href="/map">
                         <div
                             class=" border-2 border-white px-5 py-3 sm:mr-2 mb-2 flex rounded-full hover:bg-white transition duration-150 hover:text-gray-800">
                             <svg class="w-6 h-6 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"

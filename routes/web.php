@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InspectionController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/inventory', [InventoryController::class, 'index']);
     Route::get('/inventory/{slug}', [InventoryController::class, 'detail']);
+
+    Route::get('/management', [ManagementController::class, 'index']);
+    Route::post('/find', [ManagementController::class, 'get']);
+    Route::get('/management/{slug}', [ManagementController::class, 'detail']);
 
     Route::get('/inspection', [InspectionController::class, 'index']);
     Route::get('/inspection/{slug}', [InspectionController::class, 'detail']);

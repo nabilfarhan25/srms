@@ -63,6 +63,7 @@
                         </div>
                         <div>
                             <div class="inline-flex rounded-md shadow-sm" role="group">
+                                @auth
                                 @if (Auth::user()->isAdmin())
                                 <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="mr-2 block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                                 Delete
@@ -97,7 +98,8 @@
                                     </div>
                                 </div>
                                 @endif
-    
+                                @endauth
+                                
                                 <a
                                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-lime-700 focus:z-10 focus:ring-2 focus:ring-lime-700 focus:text-lime-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-lime-500 dark:focus:text-white">
                                     <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
