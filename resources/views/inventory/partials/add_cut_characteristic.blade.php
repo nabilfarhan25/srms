@@ -122,7 +122,7 @@
 
 <div class="mb-3">
     <div class="mb-2">
-        <label for="" class="font-bold"> Surface Drainage Provision :</label>
+        <label for="" class="font-bold"> Surface Drainage Provision</label>
     </div>
 
     <div class="mb-3 border border-gray-200 ">

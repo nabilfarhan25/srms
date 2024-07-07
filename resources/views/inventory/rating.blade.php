@@ -121,6 +121,8 @@
 
                     @if ($slope->slope_type === 'cut-type')
                     @include('inventory.partials.add_cut_rating')
+                    @elseif($slope->slope_type === 'rock-type')
+                    @include('inventory.partials.add_rock_rating')
                     @endif
                 </form>
             </div>

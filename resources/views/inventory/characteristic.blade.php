@@ -121,6 +121,8 @@
 
                     @if ($slope->slope_type === 'cut-type')
                     @include('inventory.partials.add_cut_characteristic')
+                    @elseif($slope->slope_type === 'rock-type')
+                    @include('inventory.partials.add_rock_characteristic')
                     @endif
                 </form>
             </div>
