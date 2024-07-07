@@ -118,7 +118,7 @@ class InventoryController extends Controller
     }
     public function store_rating(Request $request)
     {
-
+        $slope = Slopes::where('slug',$request->slug)->first();
         $rat = $request->all();
         unset($rat['_token']);
         $request->session()->put('rating', $rat);
@@ -131,15 +131,42 @@ class InventoryController extends Controller
         $dir = TemporaryFile::select(['img', 'file','type'])->get();
 
         foreach ($img as $i) {
-            //echo 'temp/'.$i->file;
             Storage::move('temp/' . $i->file, $request->slug.'/'. $i->file);
             TemporaryFile::find($i->id)->delete();
         }
+
+        if ($slope->slope_type == 'cut-type') {
+            $IS = $rating['A1'] * $rating['A2'] * $rating['A3'] * $rating['A4'] * $rating['A5'] * $rating['B1'] * $rating['B2'];
+            $CS = (($rating['C1'] * $rating['C2']) + ($rating['D1'] * $rating['D2'])) * $geometry['feature_height'];
+        }else if($slope->slope_type == 'rock-type'){
+            $IS = $rating['A1'] * $rating['A2'] * $rating['A3'] * $rating['A4'] * $rating['B1'] * $rating['B2'];
+            $K = 1;
+            if (isset($request['scale_of_failure'])) {
+                if ($request['scale_of_failure'] === "Large") {
+                    $K = 5;
+                } elseif ($request['scale_of_failure'] === "Medium") {
+                    $K = 3;
+                } elseif ($request['scale_of_failure'] === "Small") {
+                    $K = 1;
+                } else {
+                    $K = 1;
+                }
+            }
+            $CS = (($rating['C1'] * $rating['C2']) + ($rating['D1'] * $rating['D2'])) * $K;
+        }
+        $TS = $IS * $CS;
+
+        $ranking = [
+            'IS' =>$IS,
+            'CS' =>$CS,
+            'TS' =>$TS,
+        ];
 
         $slope = Slopes::where('slug', $request->slug)->firstOrFail();
         $slope->geometry = $geometry;
         $slope->characteristic = $characteristic;
         $slope->rating = $rating;
+        $slope->ranking = json_encode($ranking);
         $slope->img = json_encode($dir);
 
         $slope->save();
