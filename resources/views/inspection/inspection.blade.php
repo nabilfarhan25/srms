@@ -179,13 +179,13 @@
                             <div class="w-full">
                                 latest inspection :
                                 <h2 class="font-bold text-lg">
-                                    20 June 2022
+                                    {{date('d M Y', strtotime($slope->updated_at))}}
                                 </h2>
                             </div>
                             <div class="w-full">
                                 next inspection :
                                 <h2 class="font-bold text-lg">
-                                    20 June 2022
+                                    ~20 June 2022
                                 </h2>
                             </div>
 
@@ -264,7 +264,7 @@
                         </p>
                         <x-line />
                         <h2 class="text-5xl text-bold">
-                            29967
+                            {{round(json_decode($slope->ranking)->TS*0.062,2)}}
                         </h2>
                     </div>
 
@@ -274,7 +274,7 @@
                         </p>
                         <x-line />
                         <h2 class="text-5xl text-bold">
-                            483336
+                            {{round(json_decode($slope->ranking)->TS,2)}}
                         </h2>
                     </div>
 
@@ -284,7 +284,7 @@
                         </p>
                         <x-line />
                         <h2 class="text-5xl text-bold">
-                            40960
+                            {{round(json_decode($slope->ranking)->IS,2)}}
                         </h2>
                     </div>
 
@@ -294,7 +294,7 @@
                         </p>
                         <x-line />
                         <h2 class="text-5xl text-bold">
-                            12
+                            {{round(json_decode($slope->ranking)->CS,2)}}
                         </h2>
                     </div>
 
@@ -334,7 +334,7 @@
                                     autem odio
                                     obcaecati sapiente, velit repellendus quaerat sequi voluptates, nobis, molestias
                                     officia labore aut! Optio voluptates velit nulla rerum eum?</p>
-                                <x-primary-link>
+                                <x-primary-link href="/inspection/geometry/{{$slope->slug}}">
                                     Start Inspection
                                 </x-primary-link>
                             </div>
@@ -343,110 +343,43 @@
                         <div class="hidden p-4 rounded-lg bg-gray-100 dark:bg-gray-800" id="styled-dashboard"
                             role="tabpanel" aria-labelledby="dashboard-tab">
 
+                            @foreach ($inspections as $inspection)
                             <div
                                 class="flex px-5 py-3 mb-4 rounded-lg bg-gray-200 border border-gray-300 hover:border-lime-600">
                                 <div class="w-full border-r border-gray-300">
                                     <p class="text-sm text-gray-500">
                                         Inspection on:
                                     </p>
-                                    <div class="text-lg font-bold">20 June 2017</div>
+                                    <div class="text-lg font-bold">{{DateTime::createFromFormat('d/m/Y', $inspection->date_of_inspection)->format('d M Y')}}</div>
                                 </div>
                                 <div class="w-full md:block hidden text-center border-r border-gray-300">
                                     <p class="text-sm text-gray-500">
                                         Ranking Score :
                                     </p>
-                                    <div class=" font-semibold">1032</div>
+                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->TS*0.062,2)}}</div>
                                 </div>
 
                                 <div class="w-full md:block hidden text-center border-r border-gray-300">
                                     <p class="text-sm text-gray-500">
                                         Total Score :
                                     </p>
-                                    <div class=" font-semibold">142</div>
+                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->TS,2)}}</div>
                                 </div>
                                 <div class="w-full md:block hidden text-center border-r border-gray-300">
                                     <p class="text-sm text-gray-500">
                                         Instability Score :
                                     </p>
-                                    <div class=" font-semibold">14122</div>
+                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->IS,2)}}</div>
                                 </div>
                                 <div class="w-full md:block hidden text-center">
                                     <p class="text-sm text-gray-500">
                                         Consequence Score :
                                     </p>
-                                    <div class=" font-semibold">7</div>
+                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->CS,2)}}</div>
                                 </div>
                             </div>
+                            @endforeach
 
-                            <div
-                                class="flex px-5 py-3 mb-4 rounded-lg bg-gray-200 border border-gray-300 hover:border-lime-600">
-                                <div class="w-full border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Inspection on:
-                                    </p>
-                                    <div class="text-lg font-bold">20 June 2013</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Ranking Score :
-                                    </p>
-                                    <div class=" font-semibold">2314</div>
-                                </div>
-
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Total Score :
-                                    </p>
-                                    <div class=" font-semibold">422</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Instability Score :
-                                    </p>
-                                    <div class=" font-semibold">5623</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center">
-                                    <p class="text-sm text-gray-500">
-                                        Consequence Score :
-                                    </p>
-                                    <div class=" font-semibold">13</div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex px-5 py-3 mb-4 rounded-lg bg-gray-200 border border-gray-300 hover:border-lime-600">
-                                <div class="w-full border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Inspection on:
-                                    </p>
-                                    <div class="text-lg font-bold">20 June 2010</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Ranking Score :
-                                    </p>
-                                    <div class=" font-semibold">2123</div>
-                                </div>
-
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Total Score :
-                                    </p>
-                                    <div class=" font-semibold">234</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center border-r border-gray-300">
-                                    <p class="text-sm text-gray-500">
-                                        Instability Score :
-                                    </p>
-                                    <div class=" font-semibold">2133</div>
-                                </div>
-                                <div class="w-full md:block hidden text-center">
-                                    <p class="text-sm text-gray-500">
-                                        Consequence Score :
-                                    </p>
-                                    <div class=" font-semibold">11</div>
-                                </div>
-                            </div>
 
 
                         </div>

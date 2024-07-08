@@ -347,7 +347,7 @@
                 <div
                     class="flex px-5 py-3 mb-4 rounded-lg bg-gray-50 border border-gray-200 dark:bg-gray-800 hover:bg-gray-100">
                     <div class="w-full border-r border-gray-300">
-                        <div class="text-lg font-bold">SP-00A</div>
+                        <div class="text-lg font-bold">{{$slope->slope_name}}</div>
                         <p class="text-sm text-gray-500">
                             Updated at: {{$slope->updated_at}}
                         </p>
@@ -357,18 +357,6 @@
                             Location :
                         </p>
                         <div class=" font-semibold">{{$slope->location}}</div>
-                    </div>
-                    <div class="w-full md:block hidden text-center border-r border-gray-300">
-                        <p class="text-sm text-gray-500">
-                            Coordinate :
-                        </p>
-                        <div class=" font-semibold">Long: {{$slope->longtitude}} - Lat : {{$slope->latitude}}</div>
-                    </div>
-                    <div class="w-full md:block hidden text-center border-r border-gray-300">
-                        <p class="text-sm text-gray-500">
-                            KM :
-                        </p>
-                        <div class=" font-semibold">{{$slope->sta1}} - {{$slope->sta2}}</div>
                     </div>
                     <div class="w-full sm:flex hidden items-center justify-center border-r border-gray-300">
                         <p class="text-sm my-auto text-gray-500">Side of Road : <span
@@ -380,6 +368,12 @@
                                 class="text-base font-semibold border-2 border-gray-300 px-3 rounded-full text-gray-800">
                                 {{$slope->slope_type}}</span>
                         </p>
+                    </div>
+                    <div class="w-full text-center border-r border-gray-300">
+                        <p class="text-sm text-gray-500">
+                            Ranking Slope (RS) :
+                        </p>
+                        <div class=" font-semibold">{{round(json_decode($slope->ranking)->TS*0.062,2)}}</div>
                     </div>
                     <div class="w-full sm:flex hidden items-center justify-end pl-5">
                         <div class="inline-flex rounded-md shadow-sm" role="group">

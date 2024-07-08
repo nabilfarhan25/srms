@@ -126,10 +126,10 @@
                     <div class="p-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
                         <div>
                             <h2 class="text-gray-700 text-5xl font-bold">
-                                SP-00A
+                               {{$slope->slope_name}}
                             </h2>
                             <p class="text-gray-500">
-                                Location : Tol Semarang - Solo
+                                Location : {{$slope->location}}
                             </p>
                         </div>
 
@@ -166,13 +166,13 @@
                                 <div class="w-full">
                                     latest inspection :
                                     <h2 class="font-bold text-lg">
-                                        20 June 2022
+                                        {{date('d M Y', strtotime($slope->updated_at))}}
                                     </h2>
                                 </div>
                                 <div class="w-full">
                                     next inspection :
                                     <h2 class="font-bold text-lg">
-                                        20 June 2022
+                                        ~20 June 2022
                                     </h2>
                                 </div>
 
@@ -210,13 +210,13 @@
                                 <div class="w-full">
                                     latest inspection :
                                     <h2 class="font-bold text-lg">
-                                        20 June 2022
+                                        ~20 June 2022
                                     </h2>
                                 </div>
                                 <div class="w-full">
                                     next inspection :
                                     <h2 class="font-bold text-lg">
-                                        20 June 2022
+                                        ~20 June 2022
                                     </h2>
                                 </div>
 
@@ -232,7 +232,7 @@
                                     Engineering Maintenance
                                 </h2>
                                 <p class="text-gray-500">
-                                    Latest Inspection : 20 June 2022
+                                    Latest Inspection : {{date('d M Y', strtotime($slope->updated_at))}}
                                 </p>
                             </div>
 
@@ -243,7 +243,7 @@
                                     </p>
                                     <x-line />
                                     <h2 class="text-5xl text-bold">
-                                        29967
+                                        {{round(json_decode($slope->ranking)->TS*0.062,2)}}
                                     </h2>
                                 </div>
                                 <div class="w-2/3">
@@ -254,8 +254,7 @@
                                             </p>
                                             <x-line />
                                             <h2 class="text-3xl text-bold">
-
-                                                483336
+                                                {{round(json_decode($slope->ranking)->TS,2)}}
                                             </h2>
                                         </div>
                                         <div class="w-full px-2">
@@ -264,8 +263,7 @@
                                             </p>
                                             <x-line />
                                             <h2 class="text-3xl text-bold">
-
-                                                40960
+                                                {{round(json_decode($slope->ranking)->IS,2)}}
                                             </h2>
                                         </div>
                                     </div>
@@ -276,8 +274,7 @@
                                             </p>
                                             <x-line />
                                             <h2 class="text-3xl text-bold">
-
-                                                12
+                                                {{round(json_decode($slope->ranking)->CS,2)}}
                                             </h2>
                                         </div>
                                         <div class="w-full px-2">
@@ -286,7 +283,7 @@
                                             </p>
                                             <x-line />
                                             <h2 class="text-3xl text-bold">
-                                                29967
+                                                {{round(json_decode($slope->ranking)->TS*0.062,2)}}
                                             </h2>
                                         </div>
                                     </div>
@@ -299,7 +296,7 @@
                             <div class="grid grid-cols-3 py-5">
                                 <div>
                                     <h4 class="font-semibold">Documentation</h4>
-                                    <p class="text-gray-500">Taken on : 12 Juni 2022</p>
+                                    <p class="text-gray-500">Taken on : {{date('d M Y', strtotime($slope->updated_at))}}</p>
                                 </div>
                                 <div class="relative w-full col-span-2 overflow-hidden rounded-2xl"
                                     x-data="{ currentIndex: 0, interval: null }" x-init="() => {
@@ -310,18 +307,17 @@
                                     x-on:mouseenter="clearInterval(interval)">
                                     <ul id="images" class="flex transition-transform duration-500 ease-in-out"
                                         :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-                                        <li class="w-full flex-shrink-0"><img src="/components/bg.webp" alt="Picture 1"
-                                                class="object-cover w-full h-full"></li>
-                                        <li class="w-full flex-shrink-0"><img src="/components/bg2.webp" alt="Picture 2"
-                                                class="object-cover w-full h-full"></li>
-                                        <li class="w-full flex-shrink-0"><img src="/components/bg3.webp" alt="Picture 3"
-                                                class="object-cover w-full h-full"></li>
+                                        @foreach (json_decode($slope->img) as $img)
+                                            <li class="w-full flex-shrink-0"><img src="/storage/{{$slope->slug}}/{{$img->file}}/{{$img->img}}"
+                                                alt="Picture 3" class="object-cover w-full h-60"></li>
+                                        @endforeach
+                                                
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <x-primary-link class="w-full" href="/engineer-inspection/sp-00a">Detail Inspection
+                        <x-primary-link class="w-full" href="/engineer-inspection/{{$slope->slug}}">Detail Inspection
                         </x-primary-link>
                     </div>
                 </div>
@@ -402,7 +398,7 @@
                             </div>
                         </div>
 
-                        <x-primary-link class="w-full" href="/maintenance-routine/sp-00a">Detail Maintenance
+                        <x-primary-link class="w-full" href="/maintenance-routine/{{$slope->slug}}">Detail Maintenance
                         </x-primary-link>
 
                     </div>

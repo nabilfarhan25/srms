@@ -48,6 +48,13 @@ Route::middleware([RoleMiddleware::class . ':administrator'])->group(function ()
     Route::get('/create/rating/{slug}', [InventoryController::class, 'create_rating']);
     Route::post('/create/rating/{slug}', [InventoryController::class, 'store_rating']);
 
+    Route::get('/inspection/geometry/{slug}', [InspectionController::class, 'create_geometry']);
+    Route::post('/inspection/geometry/{slug}', [InspectionController::class, 'store_geometry']);
+    Route::get('/inspection/characteristic/{slug}', [InspectionController::class, 'create_characteristic']);
+    Route::post('/inspection/characteristic/{slug}', [InspectionController::class, 'store_characteristic']);
+    Route::get('/inspection/rating/{slug}', [InspectionController::class, 'create_rating']);
+    Route::post('/inspection/rating/{slug}', [InspectionController::class, 'store_rating']);
+
     Route::delete('/slope/{slug}', [InventoryController::class, 'destroy']);
 
     Route::post('/temp-upload', [InventoryController::class, 'tempUpload']);
