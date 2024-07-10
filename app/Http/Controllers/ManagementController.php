@@ -20,6 +20,19 @@ class ManagementController extends Controller
         return view('management.index', $data);
     }
 
+    public function detail(string $slug)
+    {
+        $data = [
+            'slope' => Slopes::where('slug', $slug)->first(),
+            'geometry' => json_decode(Slopes::where('slug', $slug)->first()['geometry']),
+            'characteristic' => json_decode(Slopes::where('slug', $slug)->first()['characteristic']),
+            'rating' => json_decode(Slopes::where('slug', $slug)->first()['rating']),
+
+            'img' => json_decode(Slopes::where('slug', $slug)->first()['img']),
+        ];
+        return view('management.detail', $data);
+    }
+
     public function get(Request $request)
     {
         $data = Slopes::where('slug',$request->slug)->first();

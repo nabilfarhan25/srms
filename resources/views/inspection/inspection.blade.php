@@ -2,7 +2,8 @@
     {{--
     <x-header /> --}}
     <div class="p-5">
-        <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div
+            class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
                 <!-- Breadcrumb -->
                 @php
@@ -246,21 +247,30 @@
                                 <h3 class="font-bold mb-2">
                                     Start Inspection
                                 </h3>
-                                
+
                                 <div>
                                     <h2>Scope of Inspections</h2>
                                     <ul class="list-disc list-inside">
-                                        <li>to re-assess the Priority Ranking for Man-made Slopes and Retaining Walls</li>
-                                        <li>to re-assess the consequence-to-life category of the slope or retaining wall</li>
-                                        <li>to check that Routine Maintenance Inspections have been carried out and documented satisfactorily</li>
-                                        <li>to identify all visible changes and signs of damage, including any landslides occurring on or around the slope or retaining wall, in particular changes since the previous Stability Assessment if this has been carried out</li>
+                                        <li>to re-assess the Priority Ranking for Man-made Slopes and Retaining Walls
+                                        </li>
+                                        <li>to re-assess the consequence-to-life category of the slope or retaining wall
+                                        </li>
+                                        <li>to check that Routine Maintenance Inspections have been carried out and
+                                            documented satisfactorily</li>
+                                        <li>to identify all visible changes and signs of damage, including any
+                                            landslides occurring on or around the slope or retaining wall, in particular
+                                            changes since the previous Stability Assessment if this has been carried out
+                                        </li>
                                         <li>to assess the adequacy of routine maintenance works</li>
-                                        <li>to re-assess the required frequency of Routine Maintenance Inspections, Engineer Inspections for Maintenance and Regular Checks of Buried Water-carrying Services</li>
-                                        <li>to advise whether a Stability Assessment of the slope or retaining wall is necessary</li>
+                                        <li>to re-assess the required frequency of Routine Maintenance Inspections,
+                                            Engineer Inspections for Maintenance and Regular Checks of Buried
+                                            Water-carrying Services</li>
+                                        <li>to advise whether a Stability Assessment of the slope or retaining wall is
+                                            necessary</li>
                                         <li>to recommend the necessary preventive maintenance works</li>
                                     </ul>
                                 </div>
-                                
+
                                 <x-primary-link href="/inspection/geometry/{{$slope->slug}}">
                                     Start Inspection
                                 </x-primary-link>
@@ -277,13 +287,15 @@
                                     <p class="text-sm text-gray-500">
                                         Inspection on:
                                     </p>
-                                    <div class="text-lg font-bold">{{DateTime::createFromFormat('d/m/Y', $inspection->date_of_inspection)->format('d M Y')}}</div>
+                                    <div class="text-lg font-bold">{{DateTime::createFromFormat('d/m/Y',
+                                        $inspection->date_of_inspection)->format('d M Y')}}</div>
                                 </div>
                                 <div class="w-full md:block hidden text-center border-r border-gray-300">
                                     <p class="text-sm text-gray-500">
                                         Ranking Score :
                                     </p>
-                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->TS*0.062,2)}}</div>
+                                    <div class=" font-semibold">{{round(json_decode($inspection->ranking)->TS*0.062,2)}}
+                                    </div>
                                 </div>
 
                                 <div class="w-full md:block hidden text-center border-r border-gray-300">
