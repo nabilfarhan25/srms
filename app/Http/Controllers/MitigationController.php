@@ -17,6 +17,15 @@ class MitigationController extends Controller
         ];
         return view('mitigation.index', $data);
     }
+    public function detail(string $slug)
+    {
+        $data = [
+            'slope' => Slopes::where('slug',$slug)->first(),
+            'img' => json_decode(Slopes::where('slug', $slug)->first()['img']),
+            
+        ];
+        return view('mitigation.detail', $data);
+    }
     public function create(string $slug)
     {
         $data = [

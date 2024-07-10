@@ -2,102 +2,18 @@
     {{--
     <x-header /> --}}
     <div class="p-5">
-        <div class="flex justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
                 <!-- Breadcrumb -->
-                <nav class="sm:flex justify-between hidden" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center">
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="/"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Dashboard</a>
-                            </div>
-                        </li>
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li aria-current="page">
-                            <div class="flex items-center">
-                                <button id="dropdownDatabase" data-dropdown-toggle="dropdown-database"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700">
+                @php
+                $bread = [
+                ['url' => '/inspection', 'label' => 'Inspections'],
+                ['url' => '/inspection/'.$slope->slug, 'label' => $slope->slope_name],
+                ['url' => '/engineer-inspection/'.$slope->slug, 'label' => 'Engineering Maintenance','active' => true],
 
-                                    <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
-                                    </svg>
-
-                                    Inspection<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 4 4 4-4" />
-                                    </svg></button>
-                                <div id="dropdown-database"
-                                    class="bg-white z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownDefault">
-                                        <li>
-                                            <a href="/inventory"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Inventory</a>
-                                        </li>
-                                        <li>
-                                            <a href="/management"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Priority</a>
-                                        </li>
-                                        <li>
-                                            <a href="/inspection"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inspection</a>
-                                        </li>
-                                        <li>
-                                            <a href="mitigation"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mitigation</a>
-                                        </li>
-                                        <li>
-                                            <a href="/map"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Info</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="#"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">SP-00A</a>
-                            </div>
-                        </li>
-
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="#"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Engineer
-                                    Inspection</a>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
+                ];
+                @endphp
+                <x-bread :items="$bread" />
 
             </div>
             <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
@@ -330,10 +246,21 @@
                                 <h3 class="font-bold mb-2">
                                     Start Inspection
                                 </h3>
-                                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iure
-                                    autem odio
-                                    obcaecati sapiente, velit repellendus quaerat sequi voluptates, nobis, molestias
-                                    officia labore aut! Optio voluptates velit nulla rerum eum?</p>
+                                
+                                <div>
+                                    <h2>Scope of Inspections</h2>
+                                    <ul class="list-disc list-inside">
+                                        <li>to re-assess the Priority Ranking for Man-made Slopes and Retaining Walls</li>
+                                        <li>to re-assess the consequence-to-life category of the slope or retaining wall</li>
+                                        <li>to check that Routine Maintenance Inspections have been carried out and documented satisfactorily</li>
+                                        <li>to identify all visible changes and signs of damage, including any landslides occurring on or around the slope or retaining wall, in particular changes since the previous Stability Assessment if this has been carried out</li>
+                                        <li>to assess the adequacy of routine maintenance works</li>
+                                        <li>to re-assess the required frequency of Routine Maintenance Inspections, Engineer Inspections for Maintenance and Regular Checks of Buried Water-carrying Services</li>
+                                        <li>to advise whether a Stability Assessment of the slope or retaining wall is necessary</li>
+                                        <li>to recommend the necessary preventive maintenance works</li>
+                                    </ul>
+                                </div>
+                                
                                 <x-primary-link href="/inspection/geometry/{{$slope->slug}}">
                                     Start Inspection
                                 </x-primary-link>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\InspectionController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\MitigationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/engineer-inspection/{slug}', [InspectionController::class, 'inspection']);
     Route::get('/maintenance-routine/{slug}', [InspectionController::class, 'maintenance']);
 
+    Route::get('/mitigation', [MitigationController::class, 'index']);
+    Route::get('/mitigation/{slug}', [MitigationController::class, 'detail']);
+    Route::get('/create/mitigation/{slug}', [MitigationController::class, 'create']);
 
     Route::post('/temp-upload', [InventoryController::class, 'tempUpload']);
     Route::delete('/temp-delete', [InventoryController::class, 'tempDelete']);
@@ -54,6 +58,10 @@ Route::middleware([RoleMiddleware::class . ':administrator'])->group(function ()
     Route::post('/inspection/characteristic/{slug}', [InspectionController::class, 'store_characteristic']);
     Route::get('/inspection/rating/{slug}', [InspectionController::class, 'create_rating']);
     Route::post('/inspection/rating/{slug}', [InspectionController::class, 'store_rating']);
+
+    Route::get('/create/maintenance/{slug}', [InspectionController::class, 'create_maintenance']);
+    Route::post('/create/maintenance/{slug}', [InspectionController::class, 'store_maintenance']);
+
 
     Route::delete('/slope/{slug}', [InventoryController::class, 'destroy']);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inspection;
+use App\Models\Maintenance;
 use App\Models\Slopes;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class InspectionController extends Controller
     {
         $data = [
             'slope' => Slopes::where('slug', $slug)->first(),
+            'maintenance' => Maintenance::orderBy('date_of_maintenance', 'desc')->first(),
 
             'img' => json_decode(Slopes::where('slug', $slug)->first()['img']),
         ];
@@ -34,17 +36,48 @@ class InspectionController extends Controller
             'slope' => Slopes::where('slug', $slug)->first(),
             'inspections' => Inspection::where('slug', $slug)->get(),
 
-            'img' => json_decode(Slopes::where('slug', $slug)->first()['img']),
         ];
         return view('inspection.inspection', $data);
     }
 
-    public function maintenance()
+    public function maintenance(string $slug)
     {
-        // $data = [
-        //     'slopes' => Slopes::all(),
-        // ];
-        return view('inspection.maintenance');
+        $data = [
+            'slope' => Slopes::where('slug', $slug)->first(),
+            'maintenance' => Maintenance::where('slug', $slug)->get(),
+        ];
+        return view('inspection.maintenance',$data);
+    }
+    public function create_maintenance(string $slug)
+    {
+        $data = [
+            'slope' => Slopes::where('slug', $slug)->first(),
+        ];
+        return view('inspection.maintenance.add',$data);
+    }
+    public function store_maintenance(Request $request)
+    {
+        $slope = Slopes::where('slug',$request->slug)->first();
+
+        $img = TemporaryFile::all();
+        $dir = TemporaryFile::select(['img', 'file','type'])->get();
+
+        foreach ($img as $i) {
+            Storage::move('temp/' . $i->file, $request->slug.'/maintenance-'.str_replace('/','',$request->date_of_maintenance).'/'. $i->file);
+            TemporaryFile::find($i->id)->delete();
+        }
+
+        $maintenance = new Maintenance();
+        $maintenance->slope_name = $slope->slope_name;
+        $maintenance->slug = $slope->slug;
+        $maintenance->slope_type = $slope->slope_type;
+        $maintenance->date_of_maintenance = $request->date_of_maintenance;
+        $maintenance->weather_condition = $request->weather_condition;
+        $maintenance->resume = $request->resume;
+        $maintenance->img = json_encode($dir);
+        $maintenance->save();
+
+        return redirect('/inspection/'.$request->slug);
     }
 
     public function create_geometry(string $slug)
@@ -63,6 +96,7 @@ class InspectionController extends Controller
 
         return redirect('/inspection/characteristic/' . $request->slug);
     }
+
     public function create_characteristic(Request $request)
     {
         $geo = $request->session()->get('inspection_geometry');
@@ -110,7 +144,7 @@ class InspectionController extends Controller
 
         $im = json_decode($slope->img);
         foreach($im as $m){
-            Storage::move($request->slug.'/' . $m->file, str_replace('/','',$geometry['date_of_inspection']).'_'.$request->slug.'/'. $m->file);
+            Storage::move($request->slug.'/' . $m->file, $request->slug.'/'.str_replace('/','',$geometry['date_of_inspection']).'_'.$request->slug.'/'. $m->file);
         }
         
         $inspection = new Inspection();

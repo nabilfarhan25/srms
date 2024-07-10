@@ -305,6 +305,39 @@ class InventoryController extends Controller
             );
             return $img_instability_after;
         }
+
+        if ($request->hasFile('img_maintenance')) {
+            $img = $request->file('img_maintenance');
+            $img_name = Str::random(40) . '.' . $img->getClientOriginalExtension();
+            $img_maintenance = uniqid('img_maintenance-');
+            $img->storeAs('temp/' . $img_maintenance, $img_name);
+            TemporaryFile::create(
+                [
+                    'file' => $img_maintenance,
+                    'img' => $img_name,
+                    'type' => 'img_maintenance',
+
+                ]
+            );
+            return $img_maintenance;
+        }
+
+        if ($request->hasFile('file_maintenance')) {
+            $img = $request->file('file_maintenance');
+            $img_name = Str::random(40) . '.' . $img->getClientOriginalExtension();
+            $file_maintenance = uniqid('file_maintenance-');
+            $img->storeAs('temp/' . $file_maintenance, $img_name);
+            TemporaryFile::create(
+                [
+                    'file' => $file_maintenance,
+                    'img' => $img_name,
+                    'type' => 'file_maintenance',
+
+                ]
+            );
+            return $file_maintenance;
+        }
+
         return '';
     }
     public function tempDelete(Request $request)

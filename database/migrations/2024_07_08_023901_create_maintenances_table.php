@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->id();
+            $table->string('slope_name');
+            $table->string('slug');
+            $table->string('slope_type');
+
+            $table->date('date_of_maintenance');
+            $table->date('weather_condition');
+
+            $table->text('resume');
+            
+            $table->json('img')->nullable();
+
             $table->timestamps();
         });
     }

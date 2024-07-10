@@ -2,102 +2,18 @@
     {{--
     <x-header /> --}}
     <div class="p-5">
-        <div class="flex justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
-                <!-- Breadcrumb -->
-                <nav class="sm:flex justify-between hidden" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center">
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="/"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Dashboard</a>
-                            </div>
-                        </li>
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li aria-current="page">
-                            <div class="flex items-center">
-                                <button id="dropdownDatabase" data-dropdown-toggle="dropdown-database"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700">
-
-                                    <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
-                                    </svg>
-
-                                    Inspection<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 4 4 4-4" />
-                                    </svg></button>
-                                <div id="dropdown-database"
-                                    class="bg-white z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownDefault">
-                                        <li>
-                                            <a href="/inventory"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Inventory</a>
-                                        </li>
-                                        <li>
-                                            <a href="/management"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Priority</a>
-                                        </li>
-                                        <li>
-                                            <a href="/inspection"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inspection</a>
-                                        </li>
-                                        <li>
-                                            <a href="mitigation"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mitigation</a>
-                                        </li>
-                                        <li>
-                                            <a href="/map"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Info</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="#"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">SP-00A</a>
-                            </div>
-                        </li>
-
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="#"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Maintenance
-                                    Routine</a>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
+                 <!-- Breadcrumb -->
+                 @php
+                 $bread = [
+                 ['url' => '/inspection', 'label' => 'Inspections'],
+                 ['url' => '/inspection/'.$slope->slug, 'label' => $slope->slope_name],
+                 ['url' => '/maintenance-routine/'.$slope->slug, 'label' => 'Routine Maintenance','active' => true],
+ 
+                 ];
+                 @endphp
+                 <x-bread :items="$bread" />
 
             </div>
             <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
@@ -365,7 +281,7 @@
                                     autem odio
                                     obcaecati sapiente, velit repellendus quaerat sequi voluptates, nobis, molestias
                                     officia labore aut! Optio voluptates velit nulla rerum eum?</p>
-                                <x-primary-link>
+                                <x-primary-link href="/create/maintenance/{{$slope->slug}}">
                                     Start Maintenance
                                 </x-primary-link>
                             </div>
@@ -375,6 +291,8 @@
                             role="tabpanel" aria-labelledby="dashboard-tab">
 
                             <div class="grid grid-cols-4 gap-3">
+
+                                @foreach ($maintenance as $item)
                                 <div class="bg-gray-200 border border-gray-300 hover:border-lime-600 rounded-xl p-3">
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center">
@@ -389,7 +307,7 @@
                                             </div>
                                             <div class="ml-2">
                                                 <h4 class="text-sm font-bold">
-                                                    Maintenance<br>20-06-2022
+                                                    Maintenance<br>{{DateTime::createFromFormat('d/m/Y', $item->date_of_maintenance)->format('d M Y')}}
                                                 </h4>
                                                 <p class="text-xs">PDF File</p>
                                             </div>
@@ -400,81 +318,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bg-gray-200 border border-gray-300 hover:border-lime-600 rounded-xl p-3">
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <div class="rounded-xl bg-gray-300 text-gray-600 p-5">
-                                                <svg class="w-6 h-6 " aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8" />
-                                                </svg>
-                                            </div>
-                                            <div class="ml-2">
-                                                <h4 class="text-sm font-bold">
-                                                    Maintenance<br>20-06-2022
-                                                </h4>
-                                                <p class="text-xs">PDF File</p>
-                                            </div>
-                                        </div>
+                                @endforeach
 
-                                        <div class="text-sm">
-                                            Download
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-200 border border-gray-300 hover:border-lime-600 rounded-xl p-3">
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <div class="rounded-xl bg-gray-300 text-gray-600 p-5">
-                                                <svg class="w-6 h-6 " aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8" />
-                                                </svg>
-                                            </div>
-                                            <div class="ml-2">
-                                                <h4 class="text-sm font-bold">
-                                                    Maintenance<br>20-06-2022
-                                                </h4>
-                                                <p class="text-xs">PDF File</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-sm">
-                                            Download
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-200 border border-gray-300 hover:border-lime-600 rounded-xl p-3">
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <div class="rounded-xl bg-gray-300 text-gray-600 p-5">
-                                                <svg class="w-6 h-6 " aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8" />
-                                                </svg>
-                                            </div>
-                                            <div class="ml-2">
-                                                <h4 class="text-sm font-bold">
-                                                    Maintenance<br>20-06-2022
-                                                </h4>
-                                                <p class="text-xs">PDF File</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-sm">
-                                            Download
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>

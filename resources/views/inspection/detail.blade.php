@@ -3,87 +3,17 @@
     <x-header /> --}}
     <div class="h-screen">
         <div class="p-5 h-full">
-            <div class="flex justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+            <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
                 <div>
-                    <!-- Breadcrumb -->
-                    <nav class="sm:flex justify-between hidden" aria-label="Breadcrumb">
-                        <ol class="inline-flex items-center">
-                            <li>
-                                <div class="flex items-center">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 16 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                    </svg>
-                                    <a href="/"
-                                        class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Dashboard</a>
-                                </div>
-                            </li>
-                            <span class="mx-2 text-gray-400">/</span>
-                            <li aria-current="page">
-                                <div class="flex items-center">
-                                    <button id="dropdownDatabase" data-dropdown-toggle="dropdown-database"
-                                        class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700">
+                     <!-- Breadcrumb -->
+                    @php
+                    $bread = [
+                    ['url' => '/inspection', 'label' => 'Inspections'],
+                    ['url' => '/inspection/'.$slope->slug, 'label' => $slope->slope_name,'active' => true],
 
-                                        <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
-                                        </svg>
-
-                                        Inspection<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 1 4 4 4-4" />
-                                        </svg></button>
-                                    <div id="dropdown-database"
-                                        class="bg-white z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                            aria-labelledby="dropdownDefault">
-                                            <li>
-                                                <a href="/inventory"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                    Inventory</a>
-                                            </li>
-                                            <li>
-                                                <a href="/management"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                    Priority</a>
-                                            </li>
-                                            <li>
-                                                <a href="/inspection"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inspection</a>
-                                            </li>
-                                            <li>
-                                                <a href="mitigation"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mitigation</a>
-                                            </li>
-                                            <li>
-                                                <a href="/map"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                    Info</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <span class="mx-2 text-gray-400">/</span>
-                            <li>
-                                <div class="flex items-center">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 16 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                    </svg>
-                                    <a href="#"
-                                        class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">SP-00A</a>
-                                </div>
-                            </li>
-                        </ol>
-                    </nav>
+                    ];
+                    @endphp
+                    <x-bread :items="$bread" />
 
                 </div>
                 <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
@@ -328,13 +258,13 @@
                                 Routine Maintenance
                             </h2>
                             <p class="text-gray-500">
-                                Latest Maintenance : 20 June 2022
+                                Latest Maintenance : {{$maintenance->date_of_maintenance}}
                             </p>
                             <div class="py-5">
                                 <div class="grid grid-cols-3 py-5">
                                     <div>
                                         <h4 class="font-semibold">Documentation</h4>
-                                        <p class="text-gray-500">Taken on : 12 Juni 2022</p>
+                                        <p class="text-gray-500">Taken on : {{$maintenance->date_of_maintenance}}</p>
                                     </div>
                                     <div class="col-span-2">
                                         <div class="relative w-full overflow-hidden rounded-2xl"
@@ -347,13 +277,14 @@
                                             x-on:mouseenter="clearInterval(interval)">
                                             <ul id="images2" class="flex transition-transform duration-500 ease-in-out"
                                                 :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-                                                <li class="w-full flex-shrink-0"><img src="/components/bg3.webp"
-                                                        alt="Picture 3" class="object-cover w-full h-full"></li>
-                                                <li class="w-full flex-shrink-0"><img src="/components/bg.webp"
-                                                        alt="Picture 1" class="object-cover w-full h-full"></li>
-                                                <li class="w-full flex-shrink-0"><img src="/components/bg2.webp"
-                                                        alt="Picture 2" class="object-cover w-full h-full"></li>
 
+                                                @foreach (json_decode($maintenance->img) as $item)
+                                                @if ($item->type !== 'file_maintenance')
+                                                <li class="w-full flex-shrink-0"><img src="/storage/{{$slope->slug}}/maintenance-{{str_replace('/','',$maintenance->date_of_maintenance)}}/{{$item->file}}/{{$item->img}}"
+                                                        alt="Picture 3" class="object-cover w-full h-60"></li>
+                                                 @endif
+                                                @endforeach
+                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -373,7 +304,7 @@
                                             </div>
                                             <div class="ml-2">
                                                 <h4 class="font-bold text-lg">
-                                                    Maintenance 20-06-2022
+                                                    Maintenance {{$maintenance->date_of_maintenance}}
                                                 </h4>
                                                 <p>PDF File</p>
                                             </div>
@@ -387,10 +318,7 @@
                                 <div class="border border-gray-300 bg-gray-100 rounded-xl p-5">
                                     <h4 class="mb-2 font-bold text-gray-400">Routine Maintenance Resume :</h4>
                                     <p class="text-gray-600">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore autem tempore
-                                        repellendus dignissimos itaque facilis necessitatibus illo! Expedita aperiam
-                                        dolorum, neque commodi doloribus maxime? Recusandae ducimus provident vero totam
-                                        quam!
+                                        {{$maintenance->resume}}
                                     </p>
 
                                 </div>
