@@ -2,18 +2,19 @@
     {{--
     <x-header /> --}}
     <div class="p-5">
-        <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div
+            class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
-                 <!-- Breadcrumb -->
-                 @php
-                 $bread = [
-                 ['url' => '/inspection', 'label' => 'Inspections'],
-                 ['url' => '/inspection/'.$slope->slug, 'label' => $slope->slope_name],
-                 ['url' => '/maintenance-routine/'.$slope->slug, 'label' => 'Routine Maintenance','active' => true],
- 
-                 ];
-                 @endphp
-                 <x-bread :items="$bread" />
+                <!-- Breadcrumb -->
+                @php
+                $bread = [
+                ['url' => '/inspection', 'label' => 'Inspections'],
+                ['url' => '/inspection/'.$slope->slug, 'label' => $slope->slope_name],
+                ['url' => '/maintenance-routine/'.$slope->slug, 'label' => 'Routine Maintenance','active' => true],
+
+                ];
+                @endphp
+                <x-bread :items="$bread" />
 
             </div>
             <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
@@ -277,10 +278,322 @@
                                 <h3 class="font-bold mb-2">
                                     Maintenance Routine
                                 </h3>
-                                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iure
-                                    autem odio
-                                    obcaecati sapiente, velit repellendus quaerat sequi voluptates, nobis, molestias
-                                    officia labore aut! Optio voluptates velit nulla rerum eum?</p>
+
+                                <div class="mb-4">
+                                    @if ($slope->slope_type == 'cut-type' || $slope->slope_type == 'fill-type')
+                                    <div class="relative overflow-x-auto rounded-xl border border-gray-300">
+                                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                            <thead
+                                                class="text-gray-700 uppercase bg-gray-50 border-b border-gray-300 dark:bg-gray-700 dark:text-gray-400">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">Type of Inspection</th>
+                                                    <th scope="col" class="px-6 py-3">Item Maintenance</th>
+                                                    <th scope="col" class="px-6 py-3">Typical Maintenance Works Required
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="4">Surface Inspection</td>
+                                                    <td class="px-6 py-2" rowspan="4">Vegetated Surface Cover</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Trim vegetation if overgrown.</li>
+                                                            <li>Replant vegetation in areas where the vegetated
+                                                                surfacing
+                                                                has died.
+                                                            </li>
+                                                            <li>Remove dead, decaying or unstable trees.</li>
+                                                            <li>Regrade eroded areas with compacted soil followed by
+                                                                re-planting.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="2">Drainage Inspection</td>
+                                                    <td class="px-6 py-2">Surface Drainage Channels</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Clear debris, undesirable vegetation and other
+                                                                obstructions.
+                                                            </li>
+                                                            <li>Repair minor cracks and rebuild severely cracked
+                                                                channels on
+                                                                drainage.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-2">Weepholes and Drainage Pipes</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Clear obstructions (e.g., weeds and debris) in weepholes
+                                                                and
+                                                                pipe
+                                                                ends.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="3">Instability Inspection</td>
+                                                    <td class="px-6 py-2">Seepage</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Identification of seepage.</li>
+                                                            <li>Drain the seepage with vertical and horizontal drains.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-2">Cracking and Deformation</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Record and monitor cracks on slopes and slope
+                                                                reinforcement
+                                                                surfaces.</li>
+                                                            <li>Record and monitor signs of deformation on the slope.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <td class="px-6 py-2">Rainfall</td>
+                                                    <td class="px-6 py-2">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Record the rainfall.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                    @if ($slope->slope_type == 'rock-type')
+                                    <div class="relative overflow-x-auto rounded-xl border border-gray-300">
+                                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                            <thead
+                                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">Type of Inspection</th>
+                                                    <th scope="col" class="px-6 py-3">Item Maintenance</th>
+                                                    <th scope="col" class="px-6 py-3">Typical Maintenance Works Required
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="4">Surface Inspection</td>
+                                                    <td class="px-6 py-4" rowspan="4">Vegetated Surface Cover</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Trim vegetation if overgrown.</li>
+                                                            <li>Replant vegetation in areas where the vegetated
+                                                                surfacing
+                                                                has died.
+                                                            </li>
+                                                            <li>Remove dead, decaying or unstable trees.</li>
+                                                            <li>Regrade eroded areas with compacted soil followed by
+                                                                re-planting.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="2">Drainage Inspection</td>
+                                                    <td class="px-6 py-4">Surface Drainage Channels</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Clear debris, undesirable vegetation and other
+                                                                obstructions.
+                                                            </li>
+                                                            <li>Repair minor cracks and rebuild severely cracked
+                                                                channels on
+                                                                drainage.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4">Weepholes and Drainage Pipes</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Clear obstructions (e.g., weeds and debris) in weepholes
+                                                                and
+                                                                pipe
+                                                                ends.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                                        rowspan="3">Instability Inspection</td>
+                                                    <td class="px-6 py-4">Seepage</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Identification of seepage.</li>
+                                                            <li>Drain the seepage with vertical and horizontal drains.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4">Cracking and Deformation</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Record and monitor cracks on slopes and slope
+                                                                reinforcement
+                                                                surfaces.</li>
+                                                            <li>Record and monitor signs of deformation on the slope.
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td class="px-6 py-4">Rainfall</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Record the rainfall.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        Geological Inspection</td>
+                                                    <td class="px-6 py-4">Rock Slope and Boulders</td>
+                                                    <td class="px-6 py-4">
+                                                        <ul class="list-disc pl-5">
+                                                            <li>Removal of loose rock debris and undesirable vegetation
+                                                                from
+                                                                rock
+                                                                slopes or around boulders.</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                    @if ($slope->slope_type == 'retaining-type')
+                                    <div class="relative overflow-x-auto rounded-xl border border-gray-300">
+                                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                            <thead
+                                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">Type of Inspection</th>
+                                                    <th scope="col" class="px-6 py-3">Item Maintenance</th>
+                                                    <th scope="col" class="px-6 py-3">Typical Maintenance Works Required
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        Surface Inspection</td>
+                                                    <td class="px-6 py-4">Impermeable Surface Cover</td>
+                                                    <td class="px-6 py-4">
+                                                        - Remove undesirable vegetation growth.<br>
+                                                        - Remove dead, decaying or unstable trees.<br>
+                                                        - Repair cracks or spalling.<br>
+                                                        - Regrade and repair eroded areas.<br>
+                                                        - Replace surface cover that has separated from underlying soil.
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        Drainage Inspection</td>
+                                                    <td class="px-6 py-4">Surface Drainage Channels</td>
+                                                    <td class="px-6 py-4">
+                                                        - Clear debris, undesirable vegetation and other
+                                                        obstructions<br>
+                                                        - Repair minor cracks and Rebuild severely cracked channels on
+                                                        drainage
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="px-6 py-4">Weepholes and Drainage Pipes</td>
+                                                    <td class="px-6 py-4">
+                                                        - Clear obstructions (e.g. weeds and debris) in weepholes and
+                                                        pipe
+                                                        ends.
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        Instability Inspection</td>
+                                                    <td class="px-6 py-4">Seepage</td>
+                                                    <td class="px-6 py-4">
+                                                        - Identification of seepage<br>
+                                                        - Drain the seepage with vertical and horizontal drains
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="px-6 py-4">Cracking and Deformation</td>
+                                                    <td class="px-6 py-4">
+                                                        - Record and monitor cracks on slopes and slope reinforcement
+                                                        surfaces<br>
+                                                        - Record and monitor signs of deformation on the slope
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="px-6 py-4">Rainfall</td>
+                                                    <td class="px-6 py-4">
+                                                        - Record the rainfall
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <td
+                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        Geological Inspection</td>
+                                                    <td class="px-6 py-4">Rock Slope and Boulders</td>
+                                                    <td class="px-6 py-4">
+                                                        - Removal of loose rock debris and undesirable vegetation from
+                                                        rock
+                                                        slopes
+                                                        or around boulders.
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                </div>
+
+                                {{-- TABLE COMBINATION --}}
+                                @if ($slope->slope_type == 'combine-type')
+                                Coming Soon
+                                @endif
+
                                 <x-primary-link href="/create/maintenance/{{$slope->slug}}">
                                     Start Maintenance
                                 </x-primary-link>
@@ -307,7 +620,8 @@
                                             </div>
                                             <div class="ml-2">
                                                 <h4 class="text-sm font-bold">
-                                                    Maintenance<br>{{DateTime::createFromFormat('d/m/Y', $item->date_of_maintenance)->format('d M Y')}}
+                                                    Maintenance<br>{{DateTime::createFromFormat('d/m/Y',
+                                                    $item->date_of_maintenance)->format('d M Y')}}
                                                 </h4>
                                                 <p class="text-xs">PDF File</p>
                                             </div>

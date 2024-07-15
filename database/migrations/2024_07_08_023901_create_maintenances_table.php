@@ -17,12 +17,10 @@ return new class extends Migration
             $table->string('slug');
             $table->string('slope_type');
 
-            $table->date('date_of_maintenance');
-            $table->date('weather_condition');
+            $table->text('slope_condition');
+            $table->text('mitigation_strategy');
 
-            $table->text('resume');
-            
-            $table->json('img')->nullable();
+            $table->json('mitigation_estimate');
 
             $table->timestamps();
         });

@@ -177,8 +177,10 @@ class InventoryController extends Controller
 
     public function destroy(string $slug){
         $item = Slopes::where('slug',$slug)->first();
+        $inspection = Inspection::where('slug',$slug)->get();
         Storage::deleteDirectory($slug);
         $item->delete();
+        $inspection->delete();
 
         return redirect('/inventory')->with('success', 'Item deleted successfully.');
     }

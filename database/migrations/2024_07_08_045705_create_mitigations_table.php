@@ -13,7 +13,19 @@ return new class extends Migration
     {
         Schema::create('mitigations', function (Blueprint $table) {
             $table->id();
+            $table->string('slope_name');
+            $table->string('slug');
+            $table->string('slope_type');
+
+            $table->text('slope_condition');
+            $table->text('mitigation_strategy');
+
+            $table->json('mitigation_estimate');
+            
             $table->timestamps();
+
+            $table->string('author');
+
         });
     }
 

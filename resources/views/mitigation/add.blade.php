@@ -1,73 +1,17 @@
 <x-app-layout>
     <div class="p-5">
-        <div class="flex justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div
+            class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
                 <!-- Breadcrumb -->
-                <nav class="sm:flex justify-between hidden" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center">
-                        <li>
-                            <div class="flex items-center">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9-10v.4A3.6 3.6 0 0 1 8.4 9H6.61A3.6 3.6 0 0 0 3 12.605M14.458 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                                </svg>
-                                <a href="/"
-                                    class="mr-3 text-sm font-medium text-gray-700 hover:text-lime-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Dashboard</a>
-                            </div>
-                        </li>
-                        <span class="mx-2 text-gray-400">/</span>
-                        <li aria-current="page">
-                            <div class="flex items-center">
-                                <button id="dropdownDatabase" data-dropdown-toggle="dropdown-database"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700">
+                @php
+                $bread = [
+                ['url' => '/mitigation', 'label' => 'Mitigation'],
+                ['url' => '', 'label' => 'Create - '.$slope->slope_name,'active' => true],
 
-                                    <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
-                                    </svg>
-
-                                    Slope Inventory<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 4 4 4-4" />
-                                    </svg></button>
-                                <div id="dropdown-database"
-                                    class="bg-white z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownDefault">
-                                        <li>
-                                            <a href="/inventory"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Inventory</a>
-                                        </li>
-                                        <li>
-                                            <a href="/management"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Priority</a>
-                                        </li>
-                                        <li>
-                                            <a href="/inspection"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inspection</a>
-                                        </li>
-                                        <li>
-                                            <a href="mitigation"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mitigation</a>
-                                        </li>
-                                        <li>
-                                            <a href="/map"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Slope
-                                                Info</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
+                ];
+                @endphp
+                <x-bread :items="$bread" />
 
             </div>
             <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
@@ -126,8 +70,8 @@
 
                         </div>
                         <div>
-                            <textarea id="message" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            <textarea id="message" rows="4" required name="slope_condition"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-lime-500 focus:border-lime-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
                                 placeholder="Discribe slope current condition here..."></textarea>
                         </div>
                     </div>
@@ -138,8 +82,8 @@
 
                         </div>
                         <div>
-                            <textarea id="message" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            <textarea id="message" rows="4" required name="mitigation_strategy"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-lime-500 focus:border-lime-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
                                 placeholder="Discribe here..."></textarea>
                         </div>
                     </div>
@@ -168,41 +112,57 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody x-data="{ grandTotal: 0 }">
                             <tr>
                                 <th colspan="5" class="text-left p-2 bg-gray-100">
                                     Routine Maintenance
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Drainage Maintenance</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="drainage_maintenance_volume"
+                                        name="drainage_maintenance_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="drainage_maintenance_price"
+                                        name="drainage_maintenance_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="drainage_maintenance_total"
+                                        name="drainage_maintenance_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Vegetation Maintenance</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="vegetation_maintenance_volume"
+                                        name="vegetation_maintenance_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>2</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="vegetation_maintenance_price"
+                                        name="vegetation_maintenance_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="vegetation_maintenance_total"
+                                        name="vegetation_maintenance_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
@@ -211,19 +171,27 @@
                                     Drainage
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Making Drainage</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="making_drainage_volume"
+                                        name="making_drainage_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="making_drainage_price"
+                                        name="making_drainage_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="making_drainage_total"
+                                        name="making_drainage_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
 
@@ -234,19 +202,27 @@
                                     Re-Vegetation
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Planting Vegetation</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="planting_vegetation_volume"
+                                        name="planting_vegetation_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>2</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="planting_vegetation_price"
+                                        name="planting_vegetation_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="planting_vegetation_total"
+                                        name="planting_vegetation_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
@@ -256,35 +232,51 @@
                                     Re-Construction of Slope Geometry
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Re-Sloping with soil of choice</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="reslope_volume" name="reslope_volume"
+                                        x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>3</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="reslope_price" name="reslope_price"
+                                        x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="reslope_total" name="reslope_total"
+                                        x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">Re-Grading</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="regrading_volume" name="regrading_volume"
+                                        x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>3</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="regrading_price" name="regrading_price"
+                                        x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="regrading_total" name="regrading_total"
+                                        x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
@@ -294,9 +286,14 @@
                                     Additional Structures
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <select id="crest_facility_group" name="crest_facility_group"
+                                    <select id="additional_structures" name="additional_structures"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">>
                                         <option>Shotcrete</option>
                                         <option>Babion Wall</option>
@@ -308,16 +305,19 @@
                                     </select>
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_structures_volume"
+                                        name="additional_structures_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>3</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_structures_price"
+                                        name="additional_structures_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_structures_total"
+                                        name="additional_structures_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
@@ -326,9 +326,14 @@
                                     Additional reinforcement
                                 </th>
                             </tr>
-                            <tr>
+                            <tr x-data="{ volume: 0, price: 0, total: 0 }" x-init="
+                                    $watch('volume + price', value => {
+                                        total = parseFloat(volume) * parseFloat(price);
+                                        grandTotal += total;
+                                    })
+                                ">
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <select id="crest_facility_group" name="crest_facility_group"
+                                    <select id="additional_reinforcement" name="additional_reinforcement"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">>
                                         <option>Nailing</option>
                                         <option>Ground Anchor</option>
@@ -336,16 +341,19 @@
                                     </select>
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_reinforcement_volume"
+                                        name="additional_reinforcement_volume" x-model.number="volume"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">m<sup>3</sup></td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_reinforcement_price"
+                                        name="additional_reinforcement_price" x-model.number="price"
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="additional_reinforcement_total"
+                                        name="additional_reinforcement_total" x-model.number="total" readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>
@@ -353,7 +361,8 @@
                             <tr>
                                 <td class="border border-gray-300 px-4 py-2" colspan="4">Total</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <input type="text" id="crest_facility_type" name="crest_facility_type"
+                                    <input type="number" step="0.01" id="total" name="total" x-model="grandTotal"
+                                        readonly
                                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
                                 </td>
                             </tr>

@@ -75,20 +75,7 @@
 </div>
 <x-line />
 
-<div x-data="{
-    modeOfFailure: 'Wedge',
-    scaleOfFailure: 'Medium',
-    potentialForFailure: 0.5,
-    a3aValue: 0,
-    a3Value: 0,
-    calculateA3a() {
-        this.a3aValue = calculateA3a(this.modeOfFailure, this.scaleOfFailure);
-    },
-    calculateA3() {
-        this.calculateA3a();
-        this.a3Value = calculateA3(this.a3aValue, this.potentialForFailure);
-    }
-}" x-init="calculateA3()">
+<div x-data="{a3Value: {{$rating->A3}}}">
 
     <div class="flex justify-between items-center">
         <legend class="text-lg font-semibold mb-2">Instability Classification</legend>
@@ -101,64 +88,6 @@
             </div>
         </div>
     </div>
-
-    <h2 class="font-bold mb-2">Mode and scale of failure</h2>
-    <div class="grid gap-6 mb-6 md:grid-cols-2">
-        <div>
-            <label for="mode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mode
-                of Failure:</label>
-            <select id="mode_of_failure" x-model="modeOfFailure" @change="calculateA3"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
-                <option value="Ravelling">Ravelling</option>
-                <option value="Toppling">Toppling</option>
-                <option value="Wedge">Wedge</option>
-                <option value="Planar">Planar</option>
-            </select>
-        </div>
-        <div>
-            <label for="scale" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Scale of
-                Failure:</label>
-            <select id="scale_of_failure" name="scale_of_failure" x-model="scaleOfFailure" @change="calculateA3"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
-                <option value="Large">Large (> 50 m³)</option>
-                <option value="Medium">Medium (5 - 50 m³)</option>
-                <option value="Small">Small (< 5 m³)</option>
-                <option value="None">None</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="pot" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Potential for
-                Failure:</label>
-            <select id="potential_for_failure" x-model="potentialForFailure" @change="calculateA3"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500">
-                <option value="0.5">Low potential for failure</option>
-                <option value="1.0">High potential for failure</option>
-            </select>
-        </div>
-        <div>
-            <label for="a3a" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mode
-                and scale of failure x Potential for failure:</label>
-            <input type="text" id="a3a_value" x-model="a3aValue" readonly
-                class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-lime-500 dark:focus:border-lime-500" />
-        </div>
-
-    </div>
-    <script>
-        function calculateA3a(mode, scale) {
-            const table = {
-                'Ravelling': { 'Large': 6, 'Medium': 3, 'Small': 2, 'None': 1 },
-                'Toppling': { 'Large': 10, 'Medium': 6, 'Small': 3, 'None': 1 },
-                'Wedge': { 'Large': 10, 'Medium': 6, 'Small': 3, 'None': 1 },
-                'Planar': { 'Large': 10, 'Medium': 6, 'Small': 3, 'None': 1 }
-            };
-            return table[mode][scale];
-        }
-    
-        function calculateA3(a3a, a3b) {
-            return a3a * a3b;
-        }
-    </script>
 </div>
 <x-line />
 

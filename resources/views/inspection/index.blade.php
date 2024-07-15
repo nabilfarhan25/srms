@@ -2,7 +2,8 @@
     {{--
     <x-header /> --}}
     <div class="p-5">
-        <div class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
+        <div
+            class="flex items-center justify-between p-3 sm:p-5 mb-5 bg-white border border-gray-200 shadow-sm rounded-2xl">
             <div>
                 <!-- Breadcrumb -->
                 @php
@@ -284,67 +285,66 @@
             </div>
 
             @foreach ($slopes as $slope)
-            <a href="/inspection/{{$slope->slug}}">
-                <div
-                    class="flex px-5 py-3 mb-4 rounded-lg bg-gray-50 border border-gray-200 dark:bg-gray-800 hover:bg-gray-100">
-                    <div class="w-full border-r border-gray-300">
-                        <div class="text-lg font-bold">{{$slope->slope_name}}</div>
-                        <p class="text-sm text-gray-500">
-                            Updated at: {{$slope->updated_at}}
-                        </p>
-                    </div>
-                    <div class="w-full text-center border-r border-gray-300">
-                        <p class="text-sm text-gray-500">
-                            Location :
-                        </p>
-                        <div class=" font-semibold">{{$slope->location}}</div>
-                    </div>
-                    <div class="w-full sm:flex hidden items-center justify-center border-r border-gray-300">
-                        <p class="text-sm my-auto text-gray-500">Side of Road : <span
-                                class="font-semibold text-gray-800">{{$slope->side_of_road}}</span>
-                        </p>
-                    </div>
-                    <div class="w-full sm:flex hidden items-center justify-center border-r border-gray-300">
-                        <p class="text-sm my-auto text-gray-500">Slope Type : <span
-                                class="text-base font-semibold border-2 border-gray-300 px-3 rounded-full text-gray-800">
-                                {{$slope->slope_type}}</span>
-                        </p>
-                    </div>
-                    <div class="w-full text-center border-r border-gray-300">
-                        <p class="text-sm text-gray-500">
-                            Ranking Slope (RS) :
-                        </p>
-                        <div class=" font-semibold">{{round(json_decode($slope->ranking)->TS*0.062,2)}}</div>
-                    </div>
-                    <div class="w-full sm:flex hidden items-center justify-end pl-5">
-                        <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button type="button"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-lime-700 focus:z-10 focus:ring-2 focus:ring-lime-700 focus:text-lime-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-lime-500 dark:focus:text-white">
-                                <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-width="2"
-                                        d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
-                                    <path stroke="currentColor" stroke-width="2"
-                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                </svg>
 
-                                Preview
-                            </button>
-                            <button type="button"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-lime-700 focus:z-10 focus:ring-2 focus:ring-lime-700 focus:text-lime-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-lime-500 dark:focus:text-white">
-                                <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
-                                    <path
-                                        d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                                </svg>
-                                Downloads
-                            </button>
-                        </div>
+            <div
+                class="flex px-5 py-3 mb-4 rounded-lg bg-gray-50 border border-gray-200 dark:bg-gray-800 hover:bg-gray-100">
+                <div class="w-full border-r border-gray-300">
+                    <div class="text-lg font-bold">{{$slope->slope_name}}</div>
+                    <p class="text-sm text-gray-500">
+                        Updated at: {{$slope->updated_at}}
+                    </p>
+                </div>
+                <div class="w-full text-center border-r border-gray-300">
+                    <p class="text-sm text-gray-500">
+                        Location :
+                    </p>
+                    <div class=" font-semibold">{{$slope->location}}</div>
+                </div>
+                <div class="w-full sm:flex hidden items-center justify-center border-r border-gray-300">
+                    <p class="text-sm my-auto text-gray-500">Side of Road : <span
+                            class="font-semibold text-gray-800">{{$slope->side_of_road}}</span>
+                    </p>
+                </div>
+                <div class="w-full sm:flex hidden items-center justify-center border-r border-gray-300">
+                    <p class="text-sm my-auto text-gray-500">Slope Type : <span
+                            class="text-base font-semibold border-2 border-gray-300 px-3 rounded-full text-gray-800">
+                            {{$slope->slope_type}}</span>
+                    </p>
+                </div>
+                <div class="w-full text-center border-r border-gray-300">
+                    <p class="text-sm text-gray-500">
+                        Ranking Slope (RS) :
+                    </p>
+                    <div class=" font-semibold">{{round(json_decode($slope->ranking)->TS*0.062,2)}}</div>
+                </div>
+                <div class="w-full sm:flex hidden items-center justify-end pl-5">
+                    <div class="inline-flex rounded-md shadow-sm" role="group">
+                        <a href="/inspection/{{$slope->slug}}"
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-lime-700 focus:z-10 focus:ring-2 focus:ring-lime-700 focus:text-lime-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-lime-500 dark:focus:text-white">
+                            <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2"
+                                    d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+
+                            Preview
+                        </a>
+                        <a href="/pdf-rating/{{$slope->slug}}" target="_blank"
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-lime-700 focus:z-10 focus:ring-2 focus:ring-lime-700 focus:text-lime-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-lime-500 dark:focus:text-white">
+                            <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
+                                <path
+                                    d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+                            </svg>
+                            Downloads
+                        </a>
                     </div>
                 </div>
-            </a>
+            </div>
+
             @endforeach
             @if(!isset($slopes))
             <div>

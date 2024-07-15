@@ -8,14 +8,23 @@ use App\Models\Slopes;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class InspectionController extends Controller
 {
     public function index()
     {
+        $slopes = Slopes::all();
+        $inspections = Inspection::all();
+
         $data = [
-            'slopes' => Slopes::all(),
+            'slopes' => $slopes,    
         ];
+        // foreach ($inspections as $inspection) {
+        //     if (Carbon::createFromFormat('d/m/Y', $inspection->date_of_inspection)->year == date('Y')) {
+        //     echo $inspection->slug;
+        //     }
+        // }
         return view('inspection.index', $data);
     }
 

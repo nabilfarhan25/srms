@@ -248,9 +248,9 @@
                                     Start Inspection
                                 </h3>
 
-                                <div>
+                                <div class="mb-3">
                                     <h2>Scope of Inspections</h2>
-                                    <ul class="list-disc list-inside">
+                                    <ul class="list-disc list-inside text-sm">
                                         <li>to re-assess the Priority Ranking for Man-made Slopes and Retaining Walls
                                         </li>
                                         <li>to re-assess the consequence-to-life category of the slope or retaining wall
